@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-6">
+  <!-- Search Box -->
+  <div class="flex justify-center mb-8">
+    <input 
+      type="text" 
+      id="searchInput" 
+      placeholder="Search files..." 
+      class="w-full max-w-md px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-300"
+      onkeyup="filterFiles()"
+    />
+  </div>
+
+  {% if files %}
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for file in files %}
+    <div class="bg-indigo-50 rounded-lg shadow-md p-5 file-item">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-lg font-semibold text-indigo-600">{{ loop.index }}.</span>
+        <span class="text-sm text-gray-500">{{ file['timestamp'] }}</span>
+      </div>
+      <div class="mb-3">
+        <h3 class="text-xl font-bold text-gray-800 break-words">{{ file['filename'] }}</h3>
+        <p class="text-sm text-gray-600">
+          Size: 
+          {% set size = file['file_size'] %}
+          {% if size < 1024 %}
+            {{ size }} bytes
+          {% elif size < 1048576 %}
+            {{ (size / 1024)|round(2) }} KB
+          {% elif size < 1073741824 %}
+            {{ (size / 1048576)|round(2) }} MB
+          {% else %}
+            {{ (size / 1073741824)|round(2) }} GB
+          {% endif %}
+        </p>
+      </div>
+      <div>
+        <a href="{{ url_for('download_file', file_id=file['id']) }}" class="block text-center bg-indigo-600 text-white font-medium py-2 px-4 rounded hover:bg-indigo-700 transition-colors duration-300">
+          Download
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="text-center text-2xl text-gray-600 mt-8">No files available.</p>
+  {% endif %}
+</div>
+
+<script>
+  function filterFiles() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const fileItems = document.querySelectorAll('.file-item');
+    fileItems.forEach(item => {
+      const filename = item.querySelector('h3').textContent.toLowerCase();
+      item.style.display = filename.includes(searchInput) ? 'block' : 'none';
+    });
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1463717738788-85fcacb6ac3d?q=80&w=1970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-black opacity-70"></div>
+  <div class="relative z-10 text-center px-6">
+    <h1 class="text-5xl font-extrabold text-white mb-4">Welcome to File Vault</h1>
+    <p class="text-xl text-gray-200 mb-8">Securely store and manage your files with cutting-edge encryption.</p>
+    <div>
+      <a href="{{ url_for('login') }}" class="inline-block border border-white text-white py-3 px-8 rounded-full mr-4 hover:bg-white hover:text-black transition duration-300">Login</a>
+      <a href="{{ url_for('register') }}" class="inline-block bg-white text-black py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300">Register</a>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+    <div class="w-full md:w-1/2 mb-10 md:mb-0">
+      <img src="https://images.unsplash.com/photo-1691458593914-e336fa35b84d?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Secure Files" class="rounded-lg shadow-xl">
+    </div>
+    <div class="w-full md:w-1/2 md:pl-12">
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">What is File Vault?</h2>
+      <p class="text-gray-600 mb-6">File Vault is a secure file management platform that leverages advanced quantum-resistant encryption to protect your valuable data. Enjoy effortless file uploads, intuitive organization, and quick access whenever you need it.</p>
+      <a href="{{ url_for('register') }}" class="bg-indigo-600 text-white py-3 px-6 rounded-full hover:bg-indigo-700 transition duration-300">Discover More</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Key Features</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-8 rounded-lg shadow hover:shadow-2xl transition duration-300">
+        <h3 class="text-xl font-semibold text-gray-700 mb-3">Effortless Upload</h3>
+        <p class="text-gray-600">Quickly upload files in various formats with our streamlined interface.</p>
+      </div>
+      <div class="bg-white p-8 rounded-lg shadow hover:shadow-2xl transition duration-300">
+        <h3 class="text-xl font-semibold text-gray-700 mb-3">Robust Encryption</h3>
+        <p class="text-gray-600">Your files are protected by state-of-the-art, quantum-resistant encryption.</p>
+      </div>
+      <div class="bg-white p-8 rounded-lg shadow hover:shadow-2xl transition duration-300">
+        <h3 class="text-xl font-semibold text-gray-700 mb-3">Smart Organization</h3>
+        <p class="text-gray-600">Effortlessly sort, tag, and search through your file collection.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">What Our Users Say</h2>
+    <div class="flex flex-col md:flex-row justify-center items-stretch gap-8">
+      <div class="flex-1 bg-gray-100 p-8 rounded-lg shadow">
+        <p class="text-gray-700 italic mb-4">"File Vault has completely transformed the way I manage my documents. The encryption gives me peace of mind."</p>
+        <h4 class="text-lg font-semibold text-gray-800">Emily Clark</h4>
+        <span class="text-gray-600">Entrepreneur</span>
+      </div>
+      <div class="flex-1 bg-gray-100 p-8 rounded-lg shadow">
+        <p class="text-gray-700 italic mb-4">"The user interface is intuitive and the upload process is a breeze. Highly recommended for secure file storage!"</p>
+        <h4 class="text-lg font-semibold text-gray-800">David Kim</h4>
+        <span class="text-gray-600">Creative Professional</span>
+      </div>
+      <div class="flex-1 bg-gray-100 p-8 rounded-lg shadow">
+        <p class="text-gray-700 italic mb-4">"Knowing my sensitive data is protected with File Vault's advanced encryption is a huge relief."</p>
+        <h4 class="text-lg font-semibold text-gray-800">Sarah Lee</h4>
+        <span class="text-gray-600">IT Manager</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call-to-Action Section -->
+<section class="py-20 bg-gradient-to-r from-teal-500 to-green-500">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-white mb-4">Secure Your Files Today</h2>
+    <p class="text-xl text-gray-100 mb-8">Join File Vault now and experience the future of secure file storage and management.</p>
+    <a href="{{ url_for('register') }}" class="inline-block bg-white text-teal-600 py-3 px-8 rounded-full font-semibold hover:bg-gray-200 transition duration-300">Get Started</a>
+  </div>
+</section>
+{% endblock %}
